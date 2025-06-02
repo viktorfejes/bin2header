@@ -44,7 +44,7 @@ typedef struct config {
 
 void print_help(const char* program_name) {
     printf("bin2header - Convert binary files to C/C++ headers\n");
-    printf("Usage: %s [options\n]", program_name);
+    printf("Usage: %s [options]\n\n", program_name);
     printf("Options:\n");
     printf("  -i <dir>    Input directory (default: '.')\n");
     printf("  -o <dir>    Output directory (default: '.')\n");
@@ -304,7 +304,7 @@ bool convert_to_header(const char* input_path, const char* output_dir, const con
 
     // Write size variable if needed
     if (config->include_size) {
-        fprintf(output, "static const size_t %s%s_size = sizeof(%s%s);\n\n",
+        fprintf(output, "static const unsigned long long %s%s_size = sizeof(%s%s);\n\n",
                 config->prefix, base_name, config->prefix, base_name);
     }
 
